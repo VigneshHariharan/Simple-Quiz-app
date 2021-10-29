@@ -1,0 +1,135 @@
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    /* background-color: antiquewhite; */
+    padding-top: 20px;
+}
+
+table {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+/* body div {
+    background-color: antiquewhite;
+    padding-top: 20px;
+   
+    height: 100vh;
+} */
+
+h1,h2,h3, h4,h5, h6, p {
+   margin: 0;
+}
+
+li:hover {
+    background-color: antiquewhite;
+}
+
+.radioAnswer {
+    display: block;
+    flex: 1;
+    /* border: 1px solid red; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.answerGroup {
+    /* border: 1px solid rebeccapurple; */
+    min-width: 200px;
+    width: 400px;
+    border-radius: 4px;
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+   
+}
+
+.answerGroup:hover {
+    background-color: seashell;
+}
+
+fieldset {
+    margin-bottom: 10px;
+    border-width: 0px;
+}
+
+legend {
+   font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.result-analytics {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 400px;
+}
+
+
+#latestAttemptAnswers {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 3px solid;
+    border-color: rgb(76, 76, 235);
+    width: 120px;
+    height: 120px;
+    margin-left: 100px;
+}
+
+
+#bar {
+    display: block;
+    width: 40px;
+    height: 4px;
+    background-color: black;
+}
+#latestAttemptAnswers h1 {
+    /* padding-right: 0.5em; */
+    font-size: 3em;
+    font-weight: 400;
+    color: rgb(48, 2, 107);
+}
+
+#latestAttemptAnswers h2 {
+    /* padding-right: 0.5em; */
+    font-size: 2em;
+}
+
+table {
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: cadetblue;
+    color: white;
+    font-weight: 400;
+};
+
+
+thead th {
+  padding: 20px; 
+}
+
+
+
+tbody td {
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding: 10px;
+}
+
+
+/* Responsiveness */
+
+@media screen and (max-width: 600px) {
+    body div {
+        width: 100%;
+    
+    }
+   
+}
