@@ -8,29 +8,52 @@
     <title>Analytics</title>
 </head>
 <body>
-   
-        <div class="latestAttempt">
-            <h2>Latest Attempt</h2>
-            <div id="latestAttemptAnswers">
-                <h1 id='noOfCorrectAnswers'>0</h1><span id="bar"></span><h2 id="noOfQuestions">5</h2>
-            </div>
-                <h2>Total number of attempts: 8</h2>
+    <div class="navbar">
+        <a href="./">
 
+        <img src='logo.png' alt='quizzes logo'/>   
+        </a>
+     </div>
+    <div class="container">
+     
+        <div class="latestAttempt">
+            <h2>Latest Attempt : </h2>
+            <div class="stats">
+                <div class="stats-card">
+                    <div class="circle">
+                                <h1 id='percentage'></h1>
+                    </div>
+                    <p>Percentage</p>
+                </div>
+           
+                  <div class="stats-card">
+                    <div class="circle">
+                                <h1 id='noOfQuestionsText'></h1>
+                    </div>
+                    <p>Number Of Questions</p>
+                </div>  <div class="stats-card">
+                    <div class="circle">
+                                <h1 id='correctAnswersText'></h1>
+                    </div>
+                    <p>Correct Answers</p>
+                </div>  <div class="stats-card">
+                    <div class="circle">
+                                <h1 id='wrongAnswersText'></h1>
+                    </div>
+                    <p>Wrong Answers</p>
+                </div>
+            </div>
+               
         </div>
 
+        <div class="tableLabel"><p>Analytics By Attempts :</p></div>
         <div id="allAttemptsTable"></div>
+
+        <div class="tableLabel"><p>Analytics By Category :</p> </div>
+
         <div id="dataByCategory"></div>
-        <table>
-            <thead><tr><th>Number of Questions</th><th>Number of Answers</th></tr></thead>
-            <tbody>
-                <tr><td>5</td><td>10</td></tr>
-                <tr><td>6</td><td>17</td></tr>
 
-            </tbody>
-            
-        </table>
-
-     
+      </div>
 </body>
 </html>
 <!-- 

@@ -42,8 +42,6 @@ function prepareAnalytics(response, answers){
       quizStatus = quizAnswerStatus.NOT_ATTEMPTED;
     }
 
-
-
     return { ...response[index], quizStatus }
   })
 
@@ -103,7 +101,6 @@ function createListWithQuestion(questionEntity) {
 };
 
 const insertQuestions = (response) => {
-    console.log('response : ',response)
     if(response.error){
       return
     }
@@ -127,14 +124,31 @@ const insertQuestions = (response) => {
       event.preventDefault()
       const formData = new FormData(event.target)
       const answers = serializeQuizData(formData);
-     prepareAnalytics(response,answers);
-     window.location.replace('/analytics.html')
+      prepareAnalytics(response,answers);
+      window.location.replace('/analytics.html')
       // console.log('analyticsElement : ',analyticsElement)
       // player.appendChild(analyticsElement)
     });
 }
 
-console.log('quiz called')
+function failureCallback() {
+  const errorElement = document.querySelector('.error');
+  errorElement.style.display = 'flex'
+  return;
+};
 
-getQuestions(insertQuestions);
+function successCallback(){
+    const loaderElement = document.querySelector('.loader');
+  loaderElement.style.display = 'none'
+  return;
+}
+ 
+function onLoadCallback(){
+    const loaderElement = document.querySelector('.loader');
+  loaderElement.style.display = 'flex'
+  return;
+}
+ 
+ 
+getQuestions(insertQuestions,onLoadCallback, successCallback,failureCallback);
 

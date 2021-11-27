@@ -35,13 +35,12 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    // filename: { "bundle.js",
   },
   devServer: {
     static: {
-      directory: path.join(__dirname, "routes"),
+      directory: path.join(__dirname, "routes")
     },
-    compress: true,
+    compress: false,
     port: 3000,
   },
   plugins: [HTMLWebpackPluginConfig, HTMLWebpackPluginConfigQuiz, HTMLWebpackPluginConfigAnalytics],

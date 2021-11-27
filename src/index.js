@@ -1,5 +1,5 @@
 const categoryEntries = {
-    default:"Random",
+    // default:"Random",
     linux:"Linux",
     devops:"DevOps",
     bash:"Bash",
@@ -11,77 +11,81 @@ const categoryEntries = {
 };
 
 
-
 function createQuizSelectors(){
     const selectorElement = document.getElementById('quiz-selector');
+    const temporaryContainer = document.createElement('div');
 
     selectorElement.setAttribute('method','GET')
     selectorElement.setAttribute('action','quiz.html')
 
 
-    const categoryQuestion = document.createElement("fieldset");
+    const categoryInputId = 'categoryConfig';
+    const categoryIdForForm = 'categoryId';
 
-    // question  
-    const categoryQuestionItem = document.createElement("legend");
-    const text = document.createTextNode('Choose a category');
-    categoryQuestionItem.appendChild(text)
+    const categoryInputElement = document.createElement('input');
+    categoryInputElement.setAttribute('list',categoryInputId);
+    categoryInputElement.setAttribute('name','category');
+    categoryInputElement.setAttribute('id',categoryIdForForm);
+    categoryInputElement.setAttribute('placeholder','quiz category')
 
+    const categoryLabelElement = document.createElement('label');
+    categoryLabelElement.setAttribute('for',categoryIdForForm);
+    categoryLabelElement.innerText = 'Category'
 
-    selectorElement.appendChild(categoryQuestion);
+    const categoryDataElement = document.createElement('datalist');
+    categoryDataElement.setAttribute('id',categoryInputId);
 
-    Object.entries(categoryEntries).forEach(([categoryKey, categoryValue]) => {
+     Object.entries(categoryEntries).forEach(([categoryKey, categoryValue]) => {
+         const optionElement = document.createElement('option');
+        //  optionElement.setAttribute('value'.categoryKey);
+        optionElement.value = categoryKey
+        // console.log('option :',optionElement)
 
-        const quizSelectionGroupElement = document.createElement('div');
+         categoryDataElement.appendChild(optionElement);
+     })
 
-        quizSelectionGroupElement.classList.add("answerGroup");
-
-        const labelElement = document.createElement('label');
-        labelElement.setAttribute('for', categoryKey);
-        labelElement.classList.add("radioAnswer");
-        labelElement.innerText = categoryValue;
-
-        const categoryElement = document.createElement('input');
-        categoryElement.setAttribute('type','radio');
-        if(categoryKey !== 'default'){
-        categoryElement.setAttribute('name','category');
-
-        } 
-        categoryElement.setAttribute('id',categoryKey);
-        categoryElement.setAttribute('value',categoryValue)
-    
-        quizSelectionGroupElement.appendChild(categoryElement);
-        quizSelectionGroupElement.appendChild(labelElement);
-
-        
-        selectorElement.appendChild(quizSelectionGroupElement)
-    });
+     const questionCategoryGroup = document.createElement('div');
+     questionCategoryGroup.setAttribute('id','questionCategoryGroup');
+     questionCategoryGroup.appendChild(categoryLabelElement);
+     questionCategoryGroup.appendChild(categoryInputElement)
+     questionCategoryGroup.appendChild(categoryDataElement);
 
 
     // question  
+
     const limitElement = document.createElement("legend");
-    const limitText = document.createTextNode('How many questions u want to take?');
+    const limitText = document.createTextNode('Number Of Questions');
     limitElement.appendChild(limitText)
 
 
     const limitInput = document.createElement('input');
     limitInput.setAttribute('name','limit');
+    limitInput.setAttribute('id','noOfQuestionsInput');
+
     limitInput.setAttribute('type','number');
     limitInput.setAttribute('min',1);
     limitInput.setAttribute('max',20);
     limitInput.setAttribute('value',5);
 
 
-
-
     const submitElement = document.createElement('button');
-    submitElement.setAttribute('type','submit')
-    submitElement.innerText = 'START QUIZ'
+    submitElement.setAttribute('type','submit');
+
+    submitElement.innerText = 'Start Quiz'
 
 
+    const questionSizeGrpElement = document.createElement('div');
+    questionSizeGrpElement.setAttribute('id','questionSizeGrpElement');
+    questionSizeGrpElement.appendChild(limitElement);
+    questionSizeGrpElement.appendChild(limitInput);
 
-    selectorElement.appendChild(limitElement);
-    selectorElement.appendChild(limitInput);
-    selectorElement.appendChild(submitElement)
+    selectorElement.appendChild(questionCategoryGroup);
+    selectorElement.appendChild(questionSizeGrpElement)
+    selectorElement.appendChild(submitElement);
+
+    // temporaryContainer.setAttribute('id','quiz-selector-temp')
+    // selectorElement.appendChild(temporaryContainer)
+
 
 }
 

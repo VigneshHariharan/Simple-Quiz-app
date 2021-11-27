@@ -76,7 +76,7 @@ function constructAllAttemptsData(allAttempts){
 
     const columnViewName = {
         id:"ID",
-        attemptNumber:"Attempt Number",
+        attemptNumber:"Attempts",
         noOfQuestions:"Number Of Questions",
         correctAnswers:"Correct Answers",
         wrongAnswers:"Wrong Answers",
@@ -88,28 +88,36 @@ function constructAllAttemptsData(allAttempts){
         columnNames[td] = { name: columnViewName[td]  }
     })
 
-    columnRowValues = columnRowValues.map((valueObj, index) => ({...valueObj.baseAnalytics, date: new Date(valueObj.baseAnalytics.date).toDateString(), id: index + 1, attemptNumber: columnRowKeys[index] || "Random"}))
+    columnRowValues = columnRowValues.map((valueObj, index) => ({...valueObj.baseAnalytics, date: new Date(valueObj.baseAnalytics.date).toDateString(), id: index + 1, attemptNumber: `Attempt ${index + 1}` || "Random"}))
 
     return [columnRowValues,tableDataOrder,columnNames];
 }
 
+function applyAnalyticsHeader(stats){
+    const percentage = (stats.correctAnswers/stats.noOfQuestions) * 100;
+    document.querySelector('#percentage').textContent = `${percentage}%`;
+    document.querySelector('#noOfQuestionsText').textContent = stats.noOfQuestions;
+    document.querySelector('#correctAnswersText').textContent = stats.correctAnswers;
+    document.querySelector('#wrongAnswersText').textContent = stats.wrongAnswers;
+}
 
 
 function applyAnalyticsElements(analytics){
 
     const dataByCategory = document.getElementById('dataByCategory');
+    const dataByAttempts =  document.getElementById('allAttemptsTable');
     const categoryData = constructCategoryData(analytics.categoryAnalytics)
     const categoryDataTable = createTable(...categoryData);
 
     const attemptsData = constructAllAttemptsData(analytics.previousAttempts);
-    console.log({attemptsData});
+    const lastAttempt = attemptsData[0][attemptsData[0]?.length - 1];
+    applyAnalyticsHeader(lastAttempt)
     const attemptsTable = createTable(...attemptsData)
 
     dataByCategory.appendChild(categoryDataTable)
-    dataByCategory.appendChild(attemptsTable)
+    dataByAttempts.appendChild(attemptsTable)
 }
 
 const analytics = getAnalytics();
 applyAnalyticsElements(analytics)
 
-console.log({analytics})
