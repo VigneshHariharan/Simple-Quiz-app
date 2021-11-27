@@ -24,17 +24,15 @@ const HTMLWebpackPluginConfigAnalytics = new HtmlWebpackPlugin({
 
 });
 
-
-
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: {
     quizEntry: "./src/index.js",
     quizPlayer: './src/quiz.js',
     quizAnalytics: './src/analytics.js'
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "docs"),
   },
   devServer: {
     static: {

@@ -8,7 +8,8 @@
   "private": false,
   "scripts": {
     "serve": "nodemon index.js",
-    "start": "webpack serve --open"
+    "start": "webpack serve --open",
+    "build":"webpack"
   },
   "dependencies": {
     "fastify": "^3.21.6"
