@@ -29,7 +29,13 @@ module.exports = {
   entry: {
     quizEntry: "./src/index.js",
     quizPlayer: './src/quiz.js',
-    quizAnalytics: './src/analytics.js'
+    quizAnalytics: './src/analytics.js',
+  },
+    module:{
+    // rules: [{
+    //   test: /\.css$/,
+    //   // use: ["css-loader", "style-loader"]
+    // }]
   },
   output: {
     path: path.resolve(__dirname, "docs"),

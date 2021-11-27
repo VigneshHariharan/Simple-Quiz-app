@@ -1,5 +1,7 @@
-import { getQuestions  } from './apis'
-import { quizAnswerStatus, storeQuizAnswers }  from './utils'
+import { getQuestions  } from './apis';
+import { quizAnswerStatus, storeQuizAnswers }  from './utils';
+import './dependencies';
+
 
 function serializeQuizData(formData){
   const quizQuestions = Object.fromEntries(formData)

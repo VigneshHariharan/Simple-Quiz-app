@@ -1,4 +1,5 @@
-import { getAnalytics } from './utils'
+import { getAnalytics } from './utils';
+import './dependencies';
 
 // column names - []
 // columnRowValues - [] of columnName as key and value as td

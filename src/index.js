@@ -1,3 +1,5 @@
+import './dependencies';
+
 const categoryEntries = {
     // default:"Random",
     linux:"Linux",
